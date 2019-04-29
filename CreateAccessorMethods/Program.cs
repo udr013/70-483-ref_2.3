@@ -7,7 +7,7 @@ namespace CreateAccessorMethods
         static void Main(string[] args)
         {
 
-            BankAccount account = new BankAccount();
+            BankAccount account = new BankAccount(10);
             account.PayInFunds(50);
             Console.WriteLine("account contains {0}", account.GetBalance());
 
@@ -20,7 +20,7 @@ namespace CreateAccessorMethods
             }
             account.WithDrawFunds(100);
 
-            BankAccount overDraftBankAccount = new OverDraftBankAccount();
+            BankAccount overDraftBankAccount = new OverDraftBankAccount(20);
             overDraftBankAccount.PayInFunds(100);
             overDraftBankAccount.WithDrawFunds(130);
             Console.WriteLine("account contains {0}", overDraftBankAccount.GetBalance());

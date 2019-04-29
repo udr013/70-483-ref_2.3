@@ -13,10 +13,13 @@ namespace CreateAccessorMethods
             public string Postcode;
         }
 
-
         protected decimal _accountBalance = 0;
         protected Address address = new Address();
 
+        public BankAccount(int initialBalance)
+        {
+            this._accountBalance = initialBalance;
+        }
         public void PayInFunds(decimal amountToPayIn)
         {
             _accountBalance = _accountBalance + amountToPayIn;

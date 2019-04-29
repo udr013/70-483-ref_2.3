@@ -9,6 +9,10 @@ namespace CreateAccessorMethods
         decimal overdraftLimit = 100;
         Address GuarantorAddress;
 
+        public OverDraftBankAccount(int initialBalance) : base(initialBalance)
+        {
+        }
+
         public override bool WithDrawFunds(decimal amountToWithDraw)
         {
             if(amountToWithDraw > _accountBalance + overdraftLimit)
