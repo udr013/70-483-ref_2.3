@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CreateAccessorMethods
 {
-    class BankAccount
+    class BankAccount: IAccount
     {
         //inner class
         protected class Address
@@ -20,12 +20,12 @@ namespace CreateAccessorMethods
         {
             this._accountBalance = initialBalance;
         }
-        public void PayInFunds(decimal amountToPayIn)
+        void IAccount.PayInFunds(decimal amountToPayIn)
         {
             _accountBalance = _accountBalance + amountToPayIn;
         }
 
-        public virtual bool WithDrawFunds(decimal amountToWithdraw)
+        public bool WithdrawFunds(decimal amountToWithdraw)
         {
             if (amountToWithdraw > _accountBalance)
             {
@@ -42,7 +42,7 @@ namespace CreateAccessorMethods
             address.Postcode = v;
         }
 
-        public decimal GetBalance()
+        decimal IAccount.GetBalance()
         {
             return _accountBalance;
         }
@@ -51,5 +51,37 @@ namespace CreateAccessorMethods
         {
             return address.Postcode;
         }
+
+        public int CompareTo(IAccount account)
+        {
+            if (account == null)
+           {
+                throw new ArgumentException("Object is not an account");
+            }
+
+                   return this._accountBalance.CompareTo(account.GetBalance());
+        }
+
+        public int CompareTo(BankAccount other)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public int CompareTo(object obj)
+        //{
+        //   if(obj == null)
+        //    {
+        //        return 1;
+        //    }
+
+        //    IAccount account = obj as IAccount;
+
+        //    if (account == null)
+        //    {
+        //        throw new ArgumentException("Object is not an account");
+        //    }
+
+        //    return this._accountBalance.CompareTo(account.GetBalance());
+        //}
     }
 }

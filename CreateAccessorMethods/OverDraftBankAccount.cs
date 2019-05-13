@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CreateAccessorMethods
 {
-    class OverDraftBankAccount: BankAccount
+    class OverDraftBankAccount: BankAccount, IAccount
     {
         decimal overdraftLimit = 100;
         Address GuarantorAddress;
@@ -13,7 +13,7 @@ namespace CreateAccessorMethods
         {
         }
 
-        public override bool WithDrawFunds(decimal amountToWithDraw)
+        bool WithdrawFunds(decimal amountToWithDraw)
         {
             if(amountToWithDraw > _accountBalance + overdraftLimit)
             {
